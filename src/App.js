@@ -1,28 +1,24 @@
 import React, {useMemo, useState} from "react";
-import './styles/App.css'
-import PostList from "./components/PostList";
-import PostForm from "./components/PostForm";
-import PostFilter from "./components/PostFilter";
-import MyModal from "./components/UI/MyModal/MyModal";
-import MyButton from "./components/UI/button/MyButton";
-
+import './styles/global.css'
+import PostList from "./components/PostList/PostList";
+import PostForm from "./components/PostForm/PostForm";
+import PostFilter from "./components/PostFilter/PostFilter";
+import Modal from "./components/UI/Modal/Modal";
+import Button from "./components/UI/Button/Button";
+import {usePosts} from "./hooks/usePosts";
+import styles from "./styles/App.module.css";
 
 function App() {
     const [posts, setPosts] = useState([
-        {id: 1, title: 'аА', body: 'бб'},
-        {id: 2, title: 'гг 2', body: 'аа'},
-        {id: 3, title: 'вв 3', body: 'яя'},
+        {id: 1, title: 'Первый пост', body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit'},
+        {id: 2, title: 'Второй пост', body: 'Nullam sollicitudin malesuada tincidunt'},
+        {id: 3, title: 'Третий пост', body: 'Nunc ut mi id nibh placerat venenatis ac a eros'},
     ]);
-    const [filter, setFilter] = useState({sort: '', query: ''})
-    const [modal, setModal] = useState(false)
 
-    const sortedPosts = useMemo(() => {
-        console.log('WORKS')
-        if (filter.sort) {
-            return [...posts].sort((a,b) => a[filter.sort].localeCompare(b[filter.sort]));
-        }
-        return posts;
-    }, [filter.sort, posts]);
+    const [filter, setFilter] = useState({sort: '', query: ''})
+    const [modal, setModal] = useState(false);
+
+    const sortedPosts = usePosts(posts, filter.sort, filter.query);
 
     const sortedAndSearchedPosts = useMemo(() => {
         return sortedPosts.filter(post => post.title.toLowerCase().includes(filter.query))
@@ -38,16 +34,18 @@ function App() {
     }
 
     return (
-        <div className="App">
-            <MyButton style={{marginTop: 30}} onClick={() => setModal(true)}>
+        <div className={styles.app}>
+            <Button onClick={() => setModal(true)}>
                 Добавить пост
-            </MyButton>
-            <MyModal visible={modal} setVisible={setModal}>
+            </Button>
+
+            <Modal visible={modal} setVisible={setModal}>
                 <PostForm create={createPost}/>
-            </MyModal>
-            <hr style={{margin: '15px 0'}}/>
+            </Modal>
+
             <PostFilter filter={filter} setFilter={setFilter}/>
-            <PostList remove={removePost} posts={sortedAndSearchedPosts} title="Посты про JS"/>
+
+            <PostList remove={removePost} posts={sortedAndSearchedPosts}/>
         </div>
   );
 }

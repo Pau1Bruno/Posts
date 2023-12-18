@@ -5,7 +5,6 @@ import MyButton from "./UI/button/MyButton";
 const PostForm = ({create}) => {
     const [post, setPost] = useState({title: '', body: '',});
 
-
     const addNewPost = (e) => {
         e.preventDefault();
         const newPost = {
@@ -17,20 +16,20 @@ const PostForm = ({create}) => {
 
     return (
         <form>
-            {/*Управляемый компонент*/}
             <MyInput
                 onChange={e => setPost({...post, title: e.target.value})}
                 value={post.title}
                 type="text"
                 placeholder="Название поста"
             />
-            {/*Неуправляемый / Неконтролируемый компонент*/}
+
             <MyInput
                 onChange={e => setPost({...post, body: e.target.value})}
                 value={post.body}
                 type="text"
                 placeholder="Описание поста"
             />
+
             <MyButton onClick={addNewPost}>Создать пост</MyButton>
         </form>
     );
