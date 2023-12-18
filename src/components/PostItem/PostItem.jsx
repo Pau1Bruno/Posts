@@ -1,18 +1,20 @@
 import React from 'react';
-import MyButton from "./UI/button/MyButton";
+import Button from "../UI/Button/Button";
+import styles from "./PostItem.module.css";
+import "../../styles/transition-group.css";
 
-const PostItem = (props) => {
+const PostItem = ({remove, number, post}) => {
     return (
-        <div className="post">
-            <div className="post__content">
-                <strong>{props.number}. {props.post.title}</strong>
-                <div>
-                    {props.post.body}
-                </div>
+        <div className={styles.post}>
+            <div className={styles.content}>
+                <strong>{number}. {post.title}</strong>
+                <p>
+                    {post.body}
+                </p>
             </div>
 
-            <div className="post__btns">
-                <MyButton onClick={() => props.remove(props.post)}>Delete</MyButton>
+            <div>
+                <Button onClick={() => remove(post)}>Delete</Button>
             </div>
         </div>
     );

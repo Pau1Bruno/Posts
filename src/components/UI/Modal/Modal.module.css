@@ -1,4 +1,4 @@
-.myModal {
+.modal {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -8,14 +8,13 @@
     background: rgba(0, 0, 0, 0.5);
 }
 
-.myModalContent {
+.content {
     padding: 25px;
-    background-color: #f3eeb4;
+    background-color: #ffc2e4;
     border-radius: 16px;
-    min-width: 500px;
 }
 
-.myModal.active {
+.modal.active {
     display: flex;
     justify-content: center;
     align-items: center;

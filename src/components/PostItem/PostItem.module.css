@@ -1,0 +1,33 @@
+.post {
+    display: flex;
+    padding: 15px;
+    background-color: rgba(0, 72, 227, 0.24);
+    border: 5px solid #a878d9;
+    border-radius: 8px;
+    margin-top: 15px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+}
+
+strong {
+    width: fit-content;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+p {
+    width: 80%;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

@@ -7,3 +7,9 @@
     border-radius: 8px;
     cursor: pointer;
 }
+
+.myBtn:hover {
+    background-color: rgba(84, 210, 172, 0.45);
+    transition: background-color, box-shadow 0.25s linear;
+    box-shadow: black 3px 3px 5px;
+}

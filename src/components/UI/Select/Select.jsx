@@ -1,9 +1,8 @@
 import React from 'react';
-import classes from "./MySelect.module.css";
 
-const MySelect = ({options, defaultValue, value, onChange}) => {
+const Select = ({options, defaultValue, value, onChange}) => {
     return (
-        <select className={classes.mySelect}
+        <select
             value={value}
             onChange={event => onChange(event.target.value)}
         >
@@ -17,4 +16,4 @@ const MySelect = ({options, defaultValue, value, onChange}) => {
     );
 };
 
-export default MySelect;
+export default Select;

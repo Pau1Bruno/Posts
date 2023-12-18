@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
-import MyInput from "./UI/input/MyInput";
-import MyButton from "./UI/button/MyButton";
+import Input from "../UI/Input/Input";
+import Button from "../UI/Button/Button";
+import "./PostForm.module.css"
 
 const PostForm = ({create}) => {
     const [post, setPost] = useState({title: '', body: '',});
@@ -16,21 +17,21 @@ const PostForm = ({create}) => {
 
     return (
         <form>
-            <MyInput
+            <Input
                 onChange={e => setPost({...post, title: e.target.value})}
                 value={post.title}
                 type="text"
                 placeholder="Название поста"
             />
 
-            <MyInput
+            <Input
                 onChange={e => setPost({...post, body: e.target.value})}
                 value={post.body}
                 type="text"
                 placeholder="Описание поста"
             />
 
-            <MyButton onClick={addNewPost}>Создать пост</MyButton>
+            <Button onClick={addNewPost}>Создать пост</Button>
         </form>
     );
 };

@@ -1,8 +1,9 @@
-.mySelect {
+select {
     padding: 5px;
     font-size: 14px;
-    background: transparent;
+    background-color: white;
     border: 5px solid #a878d9;
     border-radius: 8px;
     cursor: pointer;
+    outline: none;
 }
