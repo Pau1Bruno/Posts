@@ -1,11 +1,11 @@
-import React, {useMemo, useState} from "react";
+import React, { useState } from "react";
 import './styles/global.css'
 import PostList from "./components/PostList/PostList";
 import PostForm from "./components/PostForm/PostForm";
 import PostFilter from "./components/PostFilter/PostFilter";
 import Modal from "./components/UI/Modal/Modal";
 import Button from "./components/UI/Button/Button";
-import {usePosts} from "./hooks/usePosts";
+import { usePosts } from "./hooks/usePosts";
 import styles from "./styles/App.module.css";
 
 function App() {
@@ -19,11 +19,7 @@ function App() {
     const [modal, setModal] = useState(false);
 
     const sortedPosts = usePosts(posts, filter.sort, filter.query);
-
-    const sortedAndSearchedPosts = useMemo(() => {
-        return sortedPosts.filter(post => post.title.toLowerCase().includes(filter.query))
-    }, [filter.query, sortedPosts])
-
+    
     const createPost = (newPost) => {
         setPosts([...posts, newPost]);
         setModal(false)
@@ -45,7 +41,7 @@ function App() {
 
             <PostFilter filter={filter} setFilter={setFilter}/>
 
-            <PostList remove={removePost} posts={sortedAndSearchedPosts}/>
+            <PostList remove={removePost} posts={sortedPosts}/>
         </div>
   );
 }
